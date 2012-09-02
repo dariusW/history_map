@@ -1,4 +1,8 @@
 HistoryMap::Application.routes.draw do
+  get "users/new"
+
+  get "users/show"
+
   resource :user
 
   match '/singup' => "users#new"
