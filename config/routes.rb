@@ -1,11 +1,6 @@
 HistoryMap::Application.routes.draw do
-  get "users/new"
+  resources :users
 
-  get "users/show"
-
-  resource :user
-
-  match '/singup' => "users#new"
 
   root :to => 'static_pages#home'
   match '/' => 'static_pages#home'
