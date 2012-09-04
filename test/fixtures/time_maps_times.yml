@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  TimeMap: 
+  name: MyString
+  time: 1
+  latitude: 
+  longitude: 
+  map: MyString
+
+two:
+  TimeMap: 
+  name: MyString
+  time: 1
+  latitude: 
+  longitude: 
+  map: MyString

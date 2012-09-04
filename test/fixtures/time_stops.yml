@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Story: 
+  name: MyString
+  full_title: MyString
+  time: 1
+
+two:
+  Story: 
+  name: MyString
+  full_title: MyString
+  time: 1

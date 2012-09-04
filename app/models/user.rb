@@ -1,14 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :permissions
+  attr_accessible :name, :email, :password, :password_confirmation
+
   has_secure_password
 
-  before_save do |user|
-    user.email = email.downcase
-    if(user.permissions.nil?)
-      user.permissions = 1
-    end
-  end
-
+  before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
   validates :name, :presence => true, :length => { :maximum => 50 },
@@ -20,6 +15,10 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :length => { :minimum => 5 }
   validates :password_confirmation, :presence => true
 
+
+  def admin?
+    self.permissions == 0
+  end
 
   private
 
