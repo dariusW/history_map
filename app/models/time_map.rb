@@ -1,4 +1,22 @@
+# == Schema Information
+#
+# Table name: time_maps
+#
+#  id         :integer          not null, primary key
+#  story_id   :integer
+#  name       :string(255)
+#  full_title :string(255)
+#  content    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class TimeMap < ActiveRecord::Base
-  belongs_to :Story
-  attr_accessible :full_title, :name
+  belongs_to :story
+  attr_accessible :full_title, :name, :content
+
+  validates  :full_title, presence: true
+  validates :story_id, presence: true
+  validates :name, presence: true
+
 end
