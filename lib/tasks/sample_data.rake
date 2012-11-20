@@ -8,17 +8,6 @@ namespace :db do
     admin.toggle!(:permissions)
     admin.save
     
-    2.times do |n|
-      name  = Faker::Name.name
-      email = "example-#{n+1}@railstutorial.org"
-      password  = "password"
-      User.create!(name: name,
-                   email: email,
-                   password: password,
-                   password_confirmation: password)
-      
-    end
-    
     sampleStory = admin.stories.create!(full_title: "Bitwa pod Grunwaldem", content: "Bitwa pod Grunwaldem (w literaturze niemieckiej pierwsza bitwa pod Tannenbergiem) ",
                   name: "HEAD", precision: "HOUR", bottom_boundry: 141007140000, top_boundry: 141007150000,long: 20.095919, lat: 53.487407)
     timeMarker = sampleStory.time_markers.create!(singleton: true, name: "xxx", full_title: "Wojska polskie", color: 'FE7569', content: "Tootsie roll oat cake sweet roll ice cream chupa chups wafer caramels tootsie roll. Dragee biscuit halvah cookie. Cake pastry icing sesame snaps sugar plum.")
