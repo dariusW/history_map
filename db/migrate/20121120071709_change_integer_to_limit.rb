@@ -1,4 +1,4 @@
-class ChangeIntegerToLimitAgaun < ActiveRecord::Migration
+class ChangeIntegerToLimit < ActiveRecord::Migration
   def change
     change_column :time_stops, :time, :integer, :limit => 8
     change_column :stories, :bottom_boundry, :integer, :limit => 8
