@@ -3,7 +3,7 @@ class CreateTimeMarkersTimes < ActiveRecord::Migration
     create_table :time_markers_times do |t|
       t.references :time_marker
       t.string :name
-      t.integer :time
+      t.integer :time, :limit => 8
       t.float :latitude
       t.float :longitude
       t.text :content

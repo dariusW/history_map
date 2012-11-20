@@ -3,7 +3,7 @@ class CreateTimeMapsTimes < ActiveRecord::Migration
     create_table :time_maps_times do |t|
       t.references :time_map
       t.string :name
-      t.integer :time
+      t.integer :time, :limit => 8
       t.float :latitude
       t.float :longitude
       t.string :map

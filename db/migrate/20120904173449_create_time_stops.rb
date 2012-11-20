@@ -4,7 +4,7 @@ class CreateTimeStops < ActiveRecord::Migration
       t.references :story
       t.string :name
       t.string :full_title
-      t.integer :time
+      t.integer :time, :limit => 8 
       t.text :content
 
       t.timestamps
