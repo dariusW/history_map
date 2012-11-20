@@ -15,9 +15,9 @@
 class TimeMarker < ActiveRecord::Base
   belongs_to :story
   has_many :time_markers_time
-  attr_accessible :full_title, :name, :content, :color
+  attr_accessible :full_title, :name, :content, :color, :singleton, :linear, :polygon
   
   validates :story_id, presence: true
   validates :full_title, presence: true
-  validates :name, presence: true
+  # validates :name, presence: true
 end

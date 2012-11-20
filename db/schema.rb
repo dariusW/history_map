@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103154149) do
+ActiveRecord::Schema.define(:version => 20121119131922) do
 
   create_table "stories", :force => true do |t|
     t.integer  "user_id"
@@ -63,9 +63,23 @@ ActiveRecord::Schema.define(:version => 20121103154149) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "color"
+    t.boolean  "singleton"
+    t.boolean  "linear"
+    t.boolean  "polygon"
   end
 
   add_index "time_markers", ["story_id"], :name => "index_time_markers_on_story_id"
+
+  create_table "time_markers_positions", :force => true do |t|
+    t.integer  "time_markers_time_id"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "ordering"
+  end
+
+  add_index "time_markers_positions", ["time_markers_time_id"], :name => "index_time_markers_positions_on_time_markers_time_id"
 
   create_table "time_markers_times", :force => true do |t|
     t.integer  "time_marker_id"
@@ -88,6 +102,8 @@ ActiveRecord::Schema.define(:version => 20121103154149) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.float    "lat"
+    t.float    "long"
   end
 
   add_index "time_stops", ["story_id"], :name => "index_time_stops_on_story_id"

@@ -200,8 +200,15 @@ module StoryDateHelper
       age+=1
     end
     
-    hash = { date: all, minutes: minutes, hours: hours, days: days, months: months, years: years, c: wtf, isLeap: isLeapYear(years), decade: decade, age: age}
+    form = (wtf>0?"":"-")+years.to_s+"."+(months<10?"0":"")+months.to_s+"."+(days<10?"0":"")+days.to_s+" "+(hours<10?"0":"")+hours.to_s+":"+(minutes<10?"0":"")+minutes.to_s
+    
+    hash = { form: form, date: all, minutes: minutes, hours: hours, days: days, months: months, years: years, c: wtf, isLeap: isLeapYear(years), decade: decade, age: age}
+    string  = toString(hash, "MINUTE")
+    hash[:string] = string
+    hash
   end
+  
+  
   
   def getMonth(mth)
     case(mth)
@@ -262,7 +269,7 @@ module StoryDateHelper
           tmp = tmp + " B.C. "
         end
         tmp += parsedTime[:days].to_s + " "
-        tmp = tmp + getMonth(parsedTime[:months]) + " "
+        tmp = tmp + getMonth(parsedTime[:months]).to_s + " "
         tmp += parsedTime[:hours].to_s + ":" + parsedTime[:minutes].to_s
         tmp
       when :hour_base
@@ -325,6 +332,8 @@ module StoryDateHelper
           tmp = tmp + " B.C. "
         end
         tmp
+      else
+        "my bad"
     end
   end
   
@@ -356,5 +365,23 @@ module StoryDateHelper
     ac = -1 if year<0
     parseDate((year.abs*100000000+month*1000000+day*10000+hour*100+minute)*ac)
   end
+  
+  def validateDate(date)
+    valid = true
+    if date[:minutes]>59
+      valid = false
+    elsif date[:hours]>23
+      valid = false
+    elsif date[:years] == 0 
+      valid = false
+    elsif date[:months]>12 || date[:months] == 0
+      valid = false
+    elsif date[:days] > getDaysCount(date[:months],isLeapYear(date[:years])) || date[:days]==0
+      valid = false    
+    end
+    valid
+  end
+  
+  
   
 end

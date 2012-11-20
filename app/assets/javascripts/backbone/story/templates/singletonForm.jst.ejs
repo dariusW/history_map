@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h3>Input data about single marker</h3>
+</div>
+<div class="modal-body">
+  <table class="table table-bordered">
+  	<tbody>
+  		<tr>
+  			<td>
+  			  Title:
+  			</td>
+  			<td>
+  				 <input type="text" id="singleton-form-full-title" placeholder="Type stroey title ...." value="<%=full_title%>">
+  			</td>
+  			<td>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				About:
+  			</td>
+  			<td>
+  				<textarea rows="3" id="singleton-form-content"><%=content%></textarea>
+  			</td>
+  			<td>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				Color:
+  			</td>
+  			<td>
+  				 <input type="text" id="singleton-form-color" placeholder="Color in #FFFFFF format ...." value="<%=color%>">
+  			
+  			</td>
+  			<td>
+  				<span id="marker_color"></span>
+  			</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <a id="mark" href="#" class="btn btn-primary">Mark On Map</a>
+  <a id="update" href="#" class="btn btn-primary">Update</a>
+  <a id="cancel" href="#" class="btn btn-primary">Cancel</a>
+</div>

@@ -1,14 +1,23 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, :only => [:edit, :update]
-  before_filter :correct_user,   :only => [:edit, :update]
-  before_filter :admin_user,     :only => :destroy
-
+  before_filter :pusher_api,      :only => [:auth]
+  before_filter :signed_in_user,  :only => [:edit, :update]
+  before_filter :correct_user,    :only => [:edit, :update]
+  before_filter :admin_user,      :only => :destroy
+  before_filter :async_is_signed, :only => :me
+  
   def new
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def me
+    @user = current_user
+    @hash = {email: @user.email, id: @user.id, name: @user.name}
+    Pusher["private-transmit"].trigger("my_data_#{params[:socket_id]}", @hash)
+    render json: @hash
   end
 
   def create
@@ -47,6 +56,15 @@ class UsersController < ApplicationController
     @users = User.paginate(:page => params[:page])
   end
 
+  def auth
+    if signed_in?
+      response = Pusher[params[:channel_name]].authenticate(params[:socket_id])
+      render :json => response
+    else
+      render :text => "Forbidden", :status => '403'
+    end
+  end
+
   private
 
   def signed_in_user
@@ -65,13 +83,16 @@ class UsersController < ApplicationController
     redirect_to(root_path) unless current_user.admin?
   end
 
-  def auth
-    if current_user
-      response = Pusher[params[:channel_name]].authenticate(params[:socket_id])
-      render :json => response
-    else
+  def pusher_api
+    if(params[:channel_name].blank? || params[:socket_id].blank?)
       render :text => "Forbidden", :status => '403'
     end
   end
   
+  def async_is_signed 
+    unless signed_in?
+      render :text => "Forbidden", :status => '403'
+    end
+  end
+
 end

@@ -19,8 +19,8 @@ class TimeMapsTime < ActiveRecord::Base
   attr_accessible :latitude, :longitude, :map, :name, :time, :content
   
   validates :time_map_id, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
+  # validates :latitude, presence: true
+  # validates :longitude, presence: true
   validates :map, presence: true
   validates :name, presence: true
   validates :time, presence: true

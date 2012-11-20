@@ -1,0 +1,94 @@
+<div class="modal-header">
+  <h3>Input data about the </h3>
+</div>
+<div class="modal-body">
+  <table class="table table-bordered">
+  	<tbody>
+  		<tr>
+  			<td>
+  			  Title:
+  			</td>
+  			<td>
+  				 <input type="text" id="story-full-title" placeholder="Type stroey title ...." value="<%=full_title%>">
+  			</td>
+  			<td>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				About:
+  			</td>
+  			<td>
+  				<textarea rows="3" id="story-form-content"><%=content%></textarea>
+  			</td>
+  			<td>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				Latitude:
+  			</td>
+  			<td>
+  				 <input type="text" placeholder="Click here to edit.." id="lat_form" value="<%=lat%>">
+  			</td>
+  			<td>
+  				 <a id="modify_pos" href="#" class="btn btn-primary">Modify</a>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				Longitude:
+  			</td>
+  			<td>
+  				 <input type="text" placeholder="Click here to edit.." id="lng_form"  value="<%=long%>">
+  			</td>
+  			<td>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				Precision:
+  			</td>
+  			<td>
+  				 <select id="story-form-precision">
+  				 	<option <%if(precision=="MINUTE"){%>selected="selected"<%}%>>MINUTE</option>
+  				 	<option <%if(precision=="HOUR"){%>selected="selected"<%}%>>HOUR</option>
+  				 	<option <%if(precision=="DAY"){%>selected="selected"<%}%>>DAY</option>
+  				 	<option <%if(precision=="MONTH"){%>selected="selected"<%}%>>MONTH</option>
+  				 	<option <%if(precision=="YEAR"){%>selected="selected"<%}%>>YEAR</option>
+  				 	<option <%if(precision=="DECADE"){%>selected="selected"<%}%>>DECADE</option>
+  				 	<option <%if(precision=="AGE"){%>selected="selected"<%}%>>AGE</option>
+  				 </select>
+  			</td>
+  			<td>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				Begin date:
+  			</td>
+  			<td>
+  				 <input type="text" id="story-form-begin" placeholder="(+|-)YYYYYY.MM.DD HH:mm" value="<%=bottom_boundry.form%>">
+  			</td>
+  			<td>
+  				 <small id="story-form-begin-string"><%=bottom_boundry.string%></small>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td>
+  				End date:
+  			</td>
+  			<td>
+  				 <input type="text" id="story-form-end" placeholder="(+|-)YYYYYY.MM.DD HH:mm" value="<%=top_boundry.form%>">
+  			</td>
+  			<td>
+  				 <small id="story-form-end-string"><%=top_boundry.string%></small>
+  			</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <a id="update" href="#" class="btn btn-primary">Update</a>
+  <a id="cancel" href="#" class="btn btn-primary">Cancel</a>
+</div>

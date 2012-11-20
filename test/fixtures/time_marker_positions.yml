@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reference: MyString
+  time_markers_time: MyString
+  lat: MyString
+  float: MyString
+  lng: MyString
+  float: MyString
+
+two:
+  reference: MyString
+  time_markers_time: MyString
+  lat: MyString
+  float: MyString
+  lng: MyString
+  float: MyString

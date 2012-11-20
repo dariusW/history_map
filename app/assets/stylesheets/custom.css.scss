@@ -20,18 +20,31 @@ body {
   background-color: $basicBlue;
   
 }*/
+.navbar .nav > li > small {
+  display: block;
+float: none;
+padding: 10px 10px 11px;
+line-height: 19px;
+color: #999;
+text-decoration: none;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+
+}
+#time_stop_view{
+
+}
 
 #map_canvas img{
   max-width: none;
 }
 
 .markersSuplied>div{
-  background-color: green;
+  background-color: #66CCCC;
 }
 
 .current-time>div {
   
-  background-color: red !important;
+  background-color: #3300CC !important;
   
 }
 
@@ -46,6 +59,7 @@ body {
         position : relative;
         float : left;
         overflow: hidden;
+        overflow-y: auto;
         height: 100%;
         z-index: 100;
         
@@ -55,7 +69,7 @@ body {
   
 }
 #display {
-  
+        overflow-y: auto;
         position : relative;
         float : left;
         height : 100%;
@@ -66,7 +80,7 @@ body {
   height:inherit;
 }
 
-#opened-title {
+#opened-title-top {
   position: absolute;
   padding-top: 40px;
   top: 2%;
@@ -74,16 +88,28 @@ body {
 }
 
 #time-line{
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  height: 60px;
+  padding: 10px;
   width: 100%;
   max-width: 100%;
   overflow-y: hidden;
   overflow-x: auto;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
   z-index: 10000000;
+  background: whiteSmoke;
+  
+  small {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+    
+  #time-line-inner{
+    padding-top: 10px;
+    clear: both;
+  }
 }
 
 #time-line .pull-right{
@@ -91,10 +117,16 @@ body {
 }
 
 .time-unit{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  cursor: hand;
   width: 10px;
   height: 10px;
-  border: 1px solid black;
-  padding: 1px;
+  border: 1px solid #A0A0A0;
+  margin: 1px;
   float:left;
 }
 
@@ -117,7 +149,7 @@ html, body {
 }
 
 #pageContainer{
-  padding: 40px 0 40px 0 !important;
+  padding: 40px 0 120px 0 !important;
   overflow:auto;
   
   .search-box{
@@ -167,11 +199,11 @@ html, body {
 
 footer {
   background: #000;
-  height: 40px;
+  height: 120px;
   overflow: hidden;
-  border-top: 1px solid #9a9a9a;
+  border-top: 0px solid #9a9a9a;
   position: relative;
-  margin-top: -40px;
+  margin-top: -120px;
   bottom: 0px;
   left: 0px;
   small{

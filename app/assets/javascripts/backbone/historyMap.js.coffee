@@ -1,40 +1,56 @@
 #= require ./historyMap
-#= require_tree ./templates
-#= require_tree ./modules
-#= require ./launch
+#= require_tree ./map
+#= require_tree ./marker
+#= require_tree ./stops
+#= require_tree ./story
+#= require_tree ./time
+#= require_tree ./user
+#= require_tree ./socket
 
-window.HistoryMap =
-  Models: {}
-  Collections: {}
-  Modules: {}
-  Routers: {}
-  Views: {}
-  
 class HistoryMapApp
   openedStory: null
+  currentUser: null
+  currentStory: null
+  currentTime: null
+  editMode: false
   
   constructor: () ->
     @events = _.extend({}, Backbone.Events)
-    @eventHandlers()
+    @events.on 'ready', @start
     
   eventHandlers: () ->
     @events.on "openStory", (model) =>
-      @openedStory = model
-      
-      
+      @openedStory = model 
     
     @events.on "closeStory", (model) =>
       @openedStory = null
     
-  template: (name, context) ->
-    JST["backbone/templates/#{name}"] context
-
-  start: () ->
+    @events.on "story_list_my", () =>
+      @editMode = true
     
-    # socket.direct.bind 'connected', () =>
-    socket.socket.connection.bind 'connected', () =>
-      @socketId = socket.socket.connection.socket_id 
-      @events.trigger 'start',''
+  template: (name, module, context) ->
+    JST["backbone/#{module}/templates/#{name}"] context
+
+  start: (authorised) =>
+      @socketId = socket.socketId
+      @socket = socket
+      
+      @map = new MapModule()
+      window.map = @map
+      
+      new UserModule()
+      
+      new TimeUnitModule()
+      
+      new StoryModule()
+      new TimeMarkerModule()
+      new TimeStopModule()
+
+      
+      @eventHandlers()
+      @events.trigger 'start'
+      if authorised
+        @events.trigger 'authorized_user'
     
     
 @app = new HistoryMapApp()

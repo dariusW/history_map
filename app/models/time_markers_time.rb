@@ -17,10 +17,11 @@ class TimeMarkersTime < ActiveRecord::Base
   belongs_to :time_marker
   attr_accessible :name, :time, :latitude, :longitude, :content
   attr_writer :last, :first, :full_time
+  has_many :time_markers_position
 
   validates :time_marker_id, presence: true
-  validates :name, presence: true 
+  validates :time, presence: true 
   # validates :time, presence: true, numericality: { greater_than_or_equal_to:  (time_marker.bottom_boundry), less_than_or_equal_to: (time_marker.top_boundry) }
-  validates :latitude, presence: true, numericality: { greater_than_or_equal_to:  -90 , less_than_or_equal_to: 90 }
-  validates :longitude, presence: true , numericality: { greater_than_or_equal_to:  -180 , less_than_or_equal_to: 180 }
+  # validates :latitude, presence: true, numericality: { greater_than_or_equal_to:  -90 , less_than_or_equal_to: 90 }
+  # validates :longitude, presence: true , numericality: { greater_than_or_equal_to:  -180 , less_than_or_equal_to: 180 }
 end

@@ -1,0 +1,14 @@
+<div class="opened-story">
+  <h3><% if(editMode) {%>EDIT: <%}%><%=full_title%></h3>
+  <% if(editMode) {%>
+  <div id="buttons">
+  	
+  <a id="point" href="#" class="btn btn-primary">Add point</a>
+  <a id="line" href="#" class="btn btn-primary">Add line</a>
+  <a id="polygon" href="#" class="btn btn-primary">Add polygon</a>
+  <a id="info" href="#" class="btn btn-primary">Add info</a>
+  <a id="remove" href="#" class="btn btn-danger">Remove story</a>
+  </div>  
+  <%}%>
+  
+</div>

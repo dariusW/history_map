@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_to user
+      redirect_to root_url
     else
       flash[:error] = 'Invalid email/password combination' # Not quite right!
       render 'new'
@@ -19,12 +19,4 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
   
-  def auth
-    # if current_user
-      response = Pusher[params[:channel_name]].authenticate(params[:socket_id])
-      render :json => response
-    # else
-      # render :text => "Forbidden", :status => '403'
-    # end
-  end
 end

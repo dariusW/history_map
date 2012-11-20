@@ -1,15 +1,19 @@
 HistoryMap::Application.routes.draw do
+  get "utils/date"
+
   get "load_contents/welcome"
 
   resources :users
-  resources :stories, :only => [:index, :show]
+  resources :stories, :only => [:index, :show, :update, :create,:destroy]
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :time_stops, :only => [:show, :update, :create,:destroy]
+  resources :time_markers, :only => [:show, :update, :create, :destroy]
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout',  :to => 'sessions#destroy', :via => :delete
   
-  match '/auth', :to => 'sessions#auth'
+  match '/auth', :to => 'users#auth'
 
   root :to => 'static_pages#home'
   match '/' => 'static_pages#home'
@@ -17,7 +21,8 @@ HistoryMap::Application.routes.draw do
   match '/contact' => 'static_pages#contact'
   
   match '/stories/:id/timeline', to: 'stories#timeLine'
-  match '/contents/welcome2', to: 'load_contents#welcome2'
+
+  match '/me', to: 'users#me'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
