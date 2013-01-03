@@ -1,5 +1,6 @@
 @StoryOpenedView = Backbone.View.extend
   el: '#opened-title'
+  tagName: "li"
   
   initialize: () ->
       @eventHandlers()

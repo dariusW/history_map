@@ -3,7 +3,7 @@
   className: "tooltip"
       
   initialize: () ->
-    @model.view_info = @
+    @model.view = @
     @render()
 
   render: () ->

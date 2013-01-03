@@ -1,20 +1,23 @@
 <footer class="footer">
 
-	<div class=""  id="time-line">
-		<div class="pull-right" id="run-panel">
-			<a class="btn btn-info pull-right" id="step-next" href="#"><i class="icon-chevron-right"></i></a>
-			<a class="btn btn-info pull-right" id="play" href="#"><i class="icon-play"></i></a>
-			<a class="btn btn-info pull-right" id="step-prev" href="#"><i class="icon-chevron-left"></i></a>
+	<div class="" style="position: relative" id="time-line">
+		<div class="" style="margin: 0 auto; width: 128px;" id="run-panel">
+			<a class="btn  "  style="margin: 2px" id="step-prev" href="#"><i class="icon-chevron-left"></i></a>
+			<a class="btn  "  style="margin: 2px" id="play" href="#"><i class="icon-play"></i></a>
+			<a class="btn  " style="margin: 2px" id="step-next" href="#"><i class="icon-chevron-right"></i></a>
 		</div>
-		<div>
+		<div style="position: absolute;top:10px;left:10px;">
 			<small id="current-time-string"></small>
 		</div>
+		<div style="margin: 0 100px; position: relative; overflow-x: auto; overflow-y: hidden">
 		<div id="time-line-inner"></div>
+		</div>
 	</div>
 	<div class="container-fluid">
 		<small> Live HISTORY by Dariusz Wolek </small>
 		<nav>
-			<ul>
+			<!--
+				<ul>
 				<li>
 					<%= link_to "About",   about_path %>
 				</li>
@@ -22,6 +25,7 @@
 					<%= link_to "Contact", contact_path %>
 				</li>
 			</ul>
+			-->
 		</nav>
 		<%= debug(params) if (Rails.env.development? && false) %>
 	</div>

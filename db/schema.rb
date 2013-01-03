@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119131922) do
+ActiveRecord::Schema.define(:version => 20121120074126) do
 
   create_table "stories", :force => true do |t|
     t.integer  "user_id"
@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(:version => 20121119131922) do
     t.string   "precision"
     t.boolean  "published"
     t.text     "content"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "bottom_boundry"
     t.integer  "top_boundry"
     t.float    "lat"
     t.float    "long"
+    t.boolean  "blocked",        :default => false
   end
 
   add_index "stories", ["user_id"], :name => "index_stories_on_user_id"

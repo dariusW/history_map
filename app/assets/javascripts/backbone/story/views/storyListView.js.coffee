@@ -1,4 +1,4 @@
-@StoryListView = Backbone.View.extend
+@StoryListView = Backbone.View.extend#
   el: '#story-list'
   
   initialize: () ->
@@ -31,7 +31,7 @@
       @collection.reset()
       $('#story-list>.nav-header').text("My Stories")
       $('.story-item').remove()
-      $('#list-stories').append("<a href='#' id='create_new'>ADD NEW</a>")
+      $('.edit-panel-controll').html("<a href='#' id='create_new'>ADD NEW</a>")
       $('#create_new').click () =>
         $.ajax
           type: 'post'

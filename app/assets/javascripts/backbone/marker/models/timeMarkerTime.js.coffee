@@ -24,7 +24,7 @@
     tmp = new Array()
     idx=0
     @positions.each (pos) =>
-      tmp[idx]=pos.latlng
+      tmp[idx]=pos  .latlng
       idx+=1
     tmp
     
@@ -32,10 +32,17 @@
   setPositions: (line) ->
     @latlngArray = line.getPath().b
     @positions.reset()
-    for idx in [0...line.getPath().b.length] by 1
-      tmp = new TimeMarkerPosition
-        lat: item.lat()
-        lng: item.lng()      @positions.add tmp
+    
+    _.each @latlngArray, (item) =>
+       tmp = new TimeMarkerPosition
+         lat: item.lat()
+         lng: item.lng()
+       @positions.add tmp
+    
+    # for idx in [0...@latlngArray.length] by 1
+      # tmp = new TimeMarkerPosition
+         # lat: @latlngArray[idx].lat()
+         # lng: @latlngArray[idx].lng()      
     # tmpPositions = new TimeMarkerPositions()
     # for idx in [0...line.getPath().b.length] by 1
       # item = line.getPath().b[idx]

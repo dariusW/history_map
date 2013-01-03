@@ -15,7 +15,7 @@
     @$el
     
   events:
-    "click *" : "storyMoreInfo"
+    "click a" : "storyMoreInfo"
   
   show: () ->
     @$el.show()
@@ -35,3 +35,4 @@
         model: @model
       app.events.trigger 'openEditMode', @model
       app.events.trigger "time_edit_line"
+      $('.edit-panel-controll').remove();

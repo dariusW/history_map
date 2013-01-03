@@ -1,5 +1,6 @@
 @StoryListEditPanelView = Backbone.View.extend
   className: "edit-panel-controll"
+  tagName: 'li'
     
   initialize: () ->
     @eventHandlers()
@@ -17,9 +18,9 @@
       @render()  
       
     app.events.on 'story_list_my', () =>
-      @$el.hide()
+      
     
   render: () ->
     tmp = app.template 'editControl', 'story' , {model: true}
     @$el.html tmp
-    $('#list-stories').append @$el
+    $('#current_user').append @$el #list-stories

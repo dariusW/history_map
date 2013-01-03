@@ -1,11 +1,38 @@
-<% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+	<div class="span10 offset3 userview userslist">
+		<br/>
+		<% provide(:title, @user.name) %>
+		<div class="">
+			<aside class="">
+				<section>
+					<h1> <%= gravatar_for @user %>
+					<%= @user.name %> </h1>
+				</section>
+			</aside><br/>
+		<ul>	
+  <% @stories.each do |story| %>
+    <li>
+	<%=story.full_title%>
+	<% if story.published? %>
+		| <small>Published</small>
+	<% else%>	
+		| <small>Not published</small>
+	<% end %>
+  <% if current_user.admin? %>
+  
+	<% if story.blocked? %>
+		| <%= link_to "Unblock", story, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+	<% else%>	
+		| <%= link_to "Block", story, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+	<% end %>
+  
+    
+  <% end %>
+</li>
+  <% end %>
+  </ul>
+		</div>
+	</div>
 </div>

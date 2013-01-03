@@ -19,7 +19,7 @@
 
 class Story < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :full_title, :name, :precision, :published, :content, :bottom_boundry, :top_boundry, :top_boundry_hash, :lat, :long
+  attr_accessible :full_title, :blocked, :name, :precision, :published, :content, :bottom_boundry, :top_boundry, :top_boundry_hash, :lat, :long
   
   validates :user_id, presence: true
   validates :name, presence: true

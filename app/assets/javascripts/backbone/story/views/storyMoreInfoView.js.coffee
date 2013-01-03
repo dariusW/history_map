@@ -14,6 +14,7 @@
   open: (evt) ->
       app.events.trigger 'openStory', @model
       @$el.modal 'hide'
+      $(".edit-panel-controll").remove();
       evt.preventDefault()
       
   

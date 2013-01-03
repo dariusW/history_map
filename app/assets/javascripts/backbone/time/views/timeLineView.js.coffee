@@ -7,13 +7,17 @@
     @eventHandlers()
     @collection = new TimeLine()
     @collection.on 'add', @addTimeUnit, @
+    @collection.on 'remove', @removeTimeUnit, @
     
     @controlls = new TimeLineControllsView
       collection: @collection    
       
-    
+  removeTimeUnit: (data) ->
+    $('#time-line-inner').width($('#time-line-inner').width()-11)
     
   addTimeUnit: (data) ->
+    $('#time-line-inner').width(11+$('#time-line-inner').width())
+    
     unit = new TimeUnitView
       model: data
       timeline: @

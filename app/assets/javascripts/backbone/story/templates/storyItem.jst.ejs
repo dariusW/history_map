@@ -1,4 +1,10 @@
+<a href="#">
+<% if(editMode){ %>
+<i class="icon-edit"></i>
+<% } else { %>
+<i class="icon-film"></i>
 
+<% } %>
 	<strong class="story-item-name"><%=full_title%></strong>
-	<small class="story-item-date"><%=bottom_boundry.years%> - <%=top_boundry.years%></small>
-	<% if(editMode){ %><a href="#" id="editStory">EDIT</a> <% } %>
+	
+</a>

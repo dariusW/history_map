@@ -3,7 +3,7 @@
   className: "time-marker" 
     
   events:
-    "click h3" : "showTimeMarkerInfo"
+    "click strong" : "showTimeMarkerInfo"
     "click img" : "gotoTimeMarkerLatLng"
     "change input" : "toggleTrace"
     

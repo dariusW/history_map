@@ -2,7 +2,7 @@
   className: "storyItem"
 
   events:
-    "click h3": "openEditor"
+    "click strong": "openEditor"
     "click #remove": "remove"
     
   openEditor: () ->

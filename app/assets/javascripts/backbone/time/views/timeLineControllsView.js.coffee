@@ -45,10 +45,10 @@
     @eventHandlers()
     
   hide: () ->
-    @$el.hide()
+    @$el.css('visibility','hidden')
     
   show: () ->
-    @$el.show()
+    @$el.css('visibility','visible')
     
   eventHandlers: () ->
     app.events.on 'stop-all', () =>

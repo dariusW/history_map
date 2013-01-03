@@ -3,6 +3,7 @@
     
   events: 
     "click #update" : "update"
+    "click #wiki" : "wiki"
     "click #cancel" : "cancel"
     "click #modify_pos": "modify_pos"
     "click #finish_modify_pos": "finish_modify_pos"
@@ -13,7 +14,14 @@
   change_precision: (event) ->
     @model.set("precision", $(event.target).val())
     
+  wiki: () ->
+    $('#time_stop_view ul').append(app.template('storySetCenterButton', 'story', {text: "ok"}))
+    $('#finish_modify_pos').click () =>
+      alert()
+    app.events.trigger 'wikiSeek', @model
     
+    @$el.modal 'hide'
+        
   update: () ->
     @model.set('full_title', @$("#story-full-title").val())
     @model.set('content', @$("#story-form-content").val())

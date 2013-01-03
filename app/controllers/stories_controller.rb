@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :correct_user, :only => [:update]
+  # before_filter :correct_user, :only => [:update]
   before_filter :signed_in, :only => [:create,:destroy]
   
   def index
